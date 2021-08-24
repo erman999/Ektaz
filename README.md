@@ -1,2 +1,2 @@
-# ektaz
-Ektaz is a very simple CSS framework
+# Ektaz
+It's a CSS framework
