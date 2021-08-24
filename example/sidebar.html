@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test 3</title>
+  <style media="screen">
+    @charset "UTF-8";
+
+    :root {
+      --navbar-height: 6rem;
+      --sidebar-width: 21rem;
+      --main-col-bg: rgba(237,242,249,.96);
+      --main-col-text: #181c32;
+      --border-col-grey: 1px solid #e3e3e3;
+      --card-shadow: 0 7px 14px 0 rgb(65 69 88 / 10%), 0 3px 6px 0 rgb(0 0 0 / 7%);
+
+      /* Bootstrap */
+      --bs-blue: #0d6efd;
+      --bs-indigo: #6610f2;
+      --bs-purple: #6f42c1;
+      --bs-pink: #d63384;
+      --bs-red: #dc3545;
+      --bs-orange: #fd7e14;
+      --bs-yellow: #ffc107;
+      --bs-green: #198754;
+      --bs-teal: #20c997;
+      --bs-cyan: #0dcaf0;
+      --bs-white: #fff;
+      --bs-gray: #6c757d;
+      --bs-gray-dark: #343a40;
+      --bs-primary: #0d6efd;
+      --bs-secondary: #6c757d;
+      --bs-success: #198754;
+      --bs-info: #0dcaf0;
+      --bs-warning: #ffc107;
+      --bs-danger: #dc3545;
+      --bs-light: #f8f9fa;
+      --bs-dark: #212529;
+      --bs-font-sans-serif: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+      --bs-font-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    }
+
+    *,
+    *::after,
+    *::before {
+      margin: 0;
+      padding: 0;
+      -webkit-box-sizing: inherit;
+      box-sizing: inherit;
+      scroll-behavior: smooth;
+    }
+
+    html {
+      font-size: 62.5%;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--bs-font-sans-serif);
+      font-size: 1.6rem;
+      color: var(--bs-gray-dark);
+      background-color: var(--bs-light);
+    }
+
+    /* Utilities */
+    .p-1 {padding: 0.5rem !important;}
+    .p-2 {padding: 1rem !important;}
+    .p-3 {padding: 1.5rem !important;}
+    .p-4 {padding: 2rem !important;}
+    .p-5 {padding: 2.5rem !important;}
+    .p-6 {padding: 3rem !important;}
+    .p-7 {padding: 3.5rem !important;}
+    .p-8 {padding: 4rem !important;}
+    .p-9 {padding: 4.5rem !important;}
+    .p-10 {padding: 5rem !important;}
+
+    .pl-1 {padding-left: 0.5rem !important;}
+    .pl-2 {padding-left: 1rem !important;}
+    .pl-3 {padding-left: 1.5rem !important;}
+    .pl-4 {padding-left: 2rem !important;}
+    .pl-5 {padding-left: 2.5rem !important;}
+    .pl-6 {padding-left: 3rem !important;}
+    .pl-7 {padding-left: 3.5rem !important;}
+    .pl-8 {padding-left: 4rem !important;}
+    .pl-9 {padding-left: 4.5rem !important;}
+    .pl-10 {padding-left: 5rem !important;}
+
+    .pr-1 {padding-right: 0.5rem !important;}
+    .pr-2 {padding-right: 1rem !important;}
+    .pr-3 {padding-right: 1.5rem !important;}
+    .pr-4 {padding-right: 2rem !important;}
+    .pr-5 {padding-right: 2.5rem !important;}
+    .pr-6 {padding-right: 3rem !important;}
+    .pr-7 {padding-right: 3.5rem !important;}
+    .pr-8 {padding-right: 4rem !important;}
+    .pr-9 {padding-right: 4.5rem !important;}
+    .pr-10 {padding-right: 5rem !important;}
+
+    .pt-1 {padding-top: 0.5rem !important;}
+    .pt-2 {padding-top: 1rem !important;}
+    .pt-3 {padding-top: 1.5rem !important;}
+    .pt-4 {padding-top: 2rem !important;}
+    .pt-5 {padding-top: 2.5rem !important;}
+    .pt-6 {padding-top: 3rem !important;}
+    .pt-7 {padding-top: 3.5rem !important;}
+    .pt-8 {padding-top: 4rem !important;}
+    .pt-9 {padding-top: 4.5rem !important;}
+    .pt-10 {padding-top: 5rem !important;}
+
+    .pb-1 {padding-bottom: 0.5rem !important;}
+    .pb-2 {padding-bottom: 1rem !important;}
+    .pb-3 {padding-bottom: 1.5rem !important;}
+    .pb-4 {padding-bottom: 2rem !important;}
+    .pb-5 {padding-bottom: 2.5rem !important;}
+    .pb-6 {padding-bottom: 3rem !important;}
+    .pb-7 {padding-bottom: 3.5rem !important;}
+    .pb-8 {padding-bottom: 4rem !important;}
+    .pb-9 {padding-bottom: 4.5rem !important;}
+    .pb-10 {padding-bottom: 5rem !important;}
+
+    .px-1 {padding-left: 0.5rem !important; padding-right: 0.5rem !important;}
+    .px-2 {padding-left: 1rem !important; padding-right: 1rem !important;}
+    .px-3 {padding-left: 1.5rem !important; padding-right: 1.5rem !important;}
+    .px-4 {padding-left: 2rem !important; padding-right: 2rem !important;}
+    .px-5 {padding-left: 2.5rem !important; padding-right: 2.5rem !important;}
+    .px-6 {padding-left: 3rem !important; padding-right: 3rem !important;}
+    .px-7 {padding-left: 3.5rem !important; padding-right: 3.5rem !important;}
+    .px-8 {padding-left: 4rem !important; padding-right: 4rem !important;}
+    .px-9 {padding-left: 4.5rem !important; padding-right: 4.5rem !important;}
+    .px-10 {padding-left: 5rem !important; padding-right: 5rem !important;}
+
+    .py-1 {padding-top: 0.5rem !important; padding-bottom: 0.5rem !important;}
+    .py-2 {padding-top: 1rem !important; padding-bottom: 1rem !important;}
+    .py-3 {padding-top: 1.5rem !important; padding-bottom: 1.5rem !important;}
+    .py-4 {padding-top: 2rem !important; padding-bottom: 2rem !important;}
+    .py-5 {padding-top: 2.5rem !important; padding-bottom: 2.5rem !important;}
+    .py-6 {padding-top: 3rem !important; padding-bottom: 3rem !important;}
+    .py-7 {padding-top: 3.5rem !important; padding-bottom: 3.5rem !important;}
+    .py-8 {padding-top: 4rem !important; padding-bottom: 4rem !important;}
+    .py-9 {padding-top: 4.5rem !important; padding-bottom: 4.5rem !important;}
+    .py-10 {padding-top: 5rem !important; padding-bottom: 5rem !important;}
+
+    .m-1 {margin: 0.5rem !important;}
+    .m-2 {margin: 1rem !important;}
+    .m-3 {margin: 1.5rem !important;}
+    .m-4 {margin: 2rem !important;}
+    .m-5 {margin: 2.5rem !important;}
+    .m-6 {margin: 3rem !important;}
+    .m-7 {margin: 3.5rem !important;}
+    .m-8 {margin: 4rem !important;}
+    .m-9 {margin: 4.5rem !important;}
+    .m-10 {margin: 5rem !important;}
+
+    .ml-1 {margin-left: 0.5rem !important;}
+    .ml-2 {margin-left: 1rem !important;}
+    .ml-3 {margin-left: 1.5rem !important;}
+    .ml-4 {margin-left: 2rem !important;}
+    .ml-5 {margin-left: 2.5rem !important;}
+    .ml-6 {margin-left: 3rem !important;}
+    .ml-7 {margin-left: 3.5rem !important;}
+    .ml-8 {margin-left: 4rem !important;}
+    .ml-9 {margin-left: 4.5rem !important;}
+    .ml-10 {margin-left: 5rem !important;}
+
+    .mr-1 {margin-right: 0.5rem !important;}
+    .mr-2 {margin-right: 1rem !important;}
+    .mr-3 {margin-right: 1.5rem !important;}
+    .mr-4 {margin-right: 2rem !important;}
+    .mr-5 {margin-right: 2.5rem !important;}
+    .mr-6 {margin-right: 3rem !important;}
+    .mr-7 {margin-right: 3.5rem !important;}
+    .mr-8 {margin-right: 4rem !important;}
+    .mr-9 {margin-right: 4.5rem !important;}
+    .mr-10 {margin-right: 5rem !important;}
+
+    .mt-1 {margin-top: 0.5rem !important;}
+    .mt-2 {margin-top: 1rem !important;}
+    .mt-3 {margin-top: 1.5rem !important;}
+    .mt-4 {margin-top: 2rem !important;}
+    .mt-5 {margin-top: 2.5rem !important;}
+    .mt-6 {margin-top: 3rem !important;}
+    .mt-7 {margin-top: 3.5rem !important;}
+    .mt-8 {margin-top: 4rem !important;}
+    .mt-9 {margin-top: 4.5rem !important;}
+    .mt-10 {margin-top: 5rem !important;}
+
+    .mb-1 {margin-bottom: 0.5rem !important;}
+    .mb-2 {margin-bottom: 1rem !important;}
+    .mb-3 {margin-bottom: 1.5rem !important;}
+    .mb-4 {margin-bottom: 2rem !important;}
+    .mb-5 {margin-bottom: 2.5rem !important;}
+    .mb-6 {margin-bottom: 3rem !important;}
+    .mb-7 {margin-bottom: 3.5rem !important;}
+    .mb-8 {margin-bottom: 4rem !important;}
+    .mb-9 {margin-bottom: 4.5rem !important;}
+    .mb-10 {margin-bottom: 5rem !important;}
+
+    .mx-1 {margin-left: 0.5rem !important; margin-right: 0.5rem !important;}
+    .mx-2 {margin-left: 1rem !important; margin-right: 1rem !important;}
+    .mx-3 {margin-left: 1.5rem !important; margin-right: 1.5rem !important;}
+    .mx-4 {margin-left: 2rem !important; margin-right: 2rem !important;}
+    .mx-5 {margin-left: 2.5rem !important; margin-right: 2.5rem !important;}
+    .mx-6 {margin-left: 3rem !important; margin-right: 3rem !important;}
+    .mx-7 {margin-left: 3.5rem !important; margin-right: 3.5rem !important;}
+    .mx-8 {margin-left: 4rem !important; margin-right: 4rem !important;}
+    .mx-9 {margin-left: 4.5rem !important; margin-right: 4.5rem !important;}
+    .mx-10 {margin-left: 5rem !important; margin-right: 5rem !important;}
+
+    .my-1 {margin-top: 0.5rem !important; margin-bottom: 0.5rem !important;}
+    .my-2 {margin-top: 1rem !important; margin-bottom: 1rem !important;}
+    .my-3 {margin-top: 1.5rem !important; margin-bottom: 1.5rem !important;}
+    .my-4 {margin-top: 2rem !important; margin-bottom: 2rem !important;}
+    .my-5 {margin-top: 2.5rem !important; margin-bottom: 2.5rem !important;}
+    .my-6 {margin-top: 3rem !important; margin-bottom: 3rem !important;}
+    .my-7 {margin-top: 3.5rem !important; margin-bottom: 3.5rem !important;}
+    .my-8 {margin-top: 4rem !important; margin-bottom: 4rem !important;}
+    .my-9 {margin-top: 4.5rem !important; margin-bottom: 4.5rem !important;}
+    .my-10 {margin-top: 5rem !important; margin-bottom: 5rem !important;}
+    /* Utilities */
+
+    /* Alignment */
+    .text-left {text-align: left;}
+    .text-right {text-align: right;}
+    .text-center {text-align: center;}
+
+    .v-align-top {vertical-align: top;}
+    .v-align-bottom {vertical-align: bottom;}
+    .v-align-middle {vertical-align: middle;}
+
+    .text-nowrap {white-space: nowrap;}
+    /* Alignment */
+
+    .navbar {
+      overflow: hidden;
+      position: fixed; /* Set the navbar to fixed position */
+      top: 0; /* Position the navbar at the top of the page */
+      width: 100%; /* Full width */
+      height: var(--navbar-height);
+      z-index: 5;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      border-bottom: var(--border-col-grey);
+
+      display: flex;
+      justify-content: space-between; /* Yatayda hizala */
+      align-items: center; /* Dikeyde hizala */
+    }
+
+    .navbar-brand {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .brand {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    .brand-text {
+      color: var(--bs-gray-dark);
+      font-weight: 700;
+      font-size: 2rem;
+      margin-left: 0.5rem;
+    }
+
+    @media only screen and (max-width: 768px) {
+      /* Ekran boyutu 768px'den kücük (Cep Telefonu) ise uygula */
+      .brand-text {display: none;}
+    }
+
+    .frame {
+      margin-top: var(--navbar-height);
+      display: flex;
+      width: 100%;
+      height: calc(100vh - var(--navbar-height));
+    }
+
+    .main {
+      flex-grow: 1;
+      height: calc(100vh - var(--navbar-height));
+      overflow-x: hidden;
+      overflow-y: scroll;
+      padding: 2rem;
+      background-color: white;
+    }
+
+    @media only screen and (min-width: 1400px) {
+      /* Ekran boyutu 1400px'den büyük (XX-Large) ise uygula */
+      .main { padding: 3rem; }
+    }
+
+    .backdrop-fade {
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: var(--navbar-height);
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - var(--navbar-height));
+      z-index: 9;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .fade-animate {
+      opacity: 1;
+    }
+
+    .sidebar {
+      background-color: var(--bs-light);
+      width: 0;
+      height: calc(100vh - var(--navbar-height));
+      border-right: var(--border-col-grey);
+
+      transition: all 0.5s;
+      overflow-x: hidden;
+      z-index: 10;
+
+      display: flex;
+      flex: 0 0 var(--sidebar-width);
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    @media only screen and (max-width: 768px) {
+      /* Ekran boyutu 768px'den kücük (Cep Telefonu) ise uygula */
+      .sidebar {
+        position: absolute;
+        top: var(--navbar-height);
+        left: 0;
+        width: 0;
+      }
+    }
+
+    .sidebar-open {
+      width: var(--sidebar-width);
+    }
+
+    .sidebar-list {
+      list-style: none;
+      padding-top: 1.2rem;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      color: var(--bs-gray-dark);
+      text-decoration: none;
+
+      font-size: 1.4rem;
+      white-space: nowrap;
+      cursor: pointer;
+      padding: 0.8rem 1.2rem;
+      margin: 0.6rem 1rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.8s ease-in-out;
+    }
+
+    .sidebar-link:hover {
+      color: var(--bs-dark);
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar-link-active {
+      color: var(--bs-light) !important;
+      background-color: var(--bs-blue) !important;
+    }
+
+    .sidebar-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      white-space: nowrap;
+      padding: 1rem;
+      color: rgb(111 111 111);
+      font-weight: 400;
+    }
+
+    .icon {
+      width: 2rem;
+      height: 2rem;
+      fill: currentColor;
+      margin-right: 0.5rem;
+      position: relative;
+      top: 0.05rem;
+    }
+
+    .avatar {
+      width: 4rem;
+      height: 4rem;
+      margin-right: 0.5rem;
+    }
+
+    .avatar-rounded {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--bs-blue);
+      background-color: #e6effc;
+      border: 0.1rem solid var(--bs-blue);
+
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+
+    .page-heading {
+      margin-bottom: 2rem;
+    }
+
+    /* Sidebar Toggler */
+    .sidebar-toggler {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 3.6rem;
+      height: 3.6rem;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+      /* border: 1px solid black; */
+    }
+    @media only screen and (min-width: 768px) {
+      .sidebar-toggler {
+        display: none;
+      }
+    }
+    .menu-bars {
+      width: 2.4rem;
+      height: .2rem;
+      background: black;
+      border-radius: .5rem;
+      transition: all .5s ease-in-out;
+    }
+    .menu-bars::before,
+    .menu-bars::after {
+      content: '';
+      position: absolute;
+      width: 2.4rem;
+      height: .2rem;
+      background: black;
+      border-radius: .5rem;
+      transition: all .5s ease-in-out;
+    }
+    .menu-bars::before {
+      transform: translateY(-0.7rem);
+    }
+    .menu-bars::after {
+      transform: translateY(0.7rem);
+    }
+    /* Animation */
+    .sidebar-toggler.open .menu-bars {
+      transform: translateX(-5rem);
+      background: transparent;
+    }
+    .sidebar-toggler.open .menu-bars::before {
+      transform: rotate(45deg) translate(3.5rem, -3.5rem);
+    }
+    .sidebar-toggler.open .menu-bars::after {
+      transform: rotate(-45deg) translate(3.5rem, 3.5rem);
+    }
+    /* Sidebar Toggler */
+
+
+    /* Card */
+    .card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(0,0,0,.125);
+      border-radius: .5rem;
+      background-color: #FFFFFF;
+      background-clip: border-box;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 2rem;
+    }
+
+    .card-header {
+      padding: 1.2rem 1.6rem;
+      background-color: rgba(0,0,0,.03);
+      /* background-color: #f9fafd; */
+      border-bottom: 1px solid rgba(0,0,0,.125);
+    }
+
+    .card-body {
+      padding: 2rem;
+    }
+
+    .card-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .card-text {
+      margin-bottom: 1.6rem;
+    }
+
+    .card-footer {
+      padding: 1.2rem 1.6rem;
+      background-color: rgba(0,0,0,.03);
+      border-top: 1px solid rgba(0,0,0,.125);
+      text-align: center;
+    }
+    /* Card */
+
+    /* Grid */
+    .row {
+      display: flex;
+      flex-direction: row;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media only screen and (min-width: 1400px) {
+      /* Ekran boyutu 1400px'den büyük (XX-Large) ise uygula */
+      .row { width: 90%; }
+    }
+
+    .col-25 {
+      width: 25%;
+      padding: 10px;
+      border: 1px solid black;
+    }
+
+    @media only screen and (max-width: 1000px) {
+      /* küçük ise uygula */
+      .col-25 { width: 50%; }
+    }
+
+    @media only screen and (max-width: 800px) {
+      /* küçük ise uygula */
+      .col-25 { width: 100%; }
+    }
+    /* Grid */
+
+    /* Table */
+    table, td, th {
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      padding: 1rem;
+    }
+
+    tr:nth-child(even) {background-color: #f2f2f2;}
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+    /* Table */
+
+    .test-btn {
+      width: 4rem;
+      height: 4rem;
+      background-color: yellow;
+      border: 2px solid black;
+      border-radius: 5px;
+      position: absolute;
+      right: 10px;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+    }
+
+  </style>
+  <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="icon-add" viewBox="0 0 24 24">
+      <path d="M18.984 12.984h-6v6h-1.969v-6h-6v-1.969h6v-6h1.969v6h6v1.969z"></path>
+    </symbol>
+    <symbol id="icon-add_box" viewBox="0 0 24 24">
+      <path
+      d="M17.016 12.984v-1.969h-4.031v-4.031h-1.969v4.031h-4.031v1.969h4.031v4.031h1.969v-4.031h4.031zM18.984 3q0.797 0 1.406 0.609t0.609 1.406v13.969q0 0.797-0.609 1.406t-1.406 0.609h-13.969q-0.844 0-1.43-0.586t-0.586-1.43v-13.969q0-0.844 0.586-1.43t1.43-0.586h13.969z">
+    </path>
+  </symbol>
+  <symbol id="icon-add_circle" viewBox="0 0 24 24">
+    <path
+    d="M17.016 12.984v-1.969h-4.031v-4.031h-1.969v4.031h-4.031v1.969h4.031v4.031h1.969v-4.031h4.031zM12 2.016q4.125 0 7.055 2.93t2.93 7.055-2.93 7.055-7.055 2.93-7.055-2.93-2.93-7.055 2.93-7.055 7.055-2.93z">
+  </path>
+</symbol>
+<symbol id="icon-add_circle_outline" viewBox="0 0 24 24">
+  <path
+  d="M12 20.016q3.281 0 5.648-2.367t2.367-5.648-2.367-5.648-5.648-2.367-5.648 2.367-2.367 5.648 2.367 5.648 5.648 2.367zM12 2.016q4.125 0 7.055 2.93t2.93 7.055-2.93 7.055-7.055 2.93-7.055-2.93-2.93-7.055 2.93-7.055 7.055-2.93zM12.984 6.984v4.031h4.031v1.969h-4.031v4.031h-1.969v-4.031h-4.031v-1.969h4.031v-4.031h1.969z">
+</path>
+</symbol>
+<symbol id="icon-clear" viewBox="0 0 24 24">
+  <path
+  d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z">
+</path>
+</symbol>
+<symbol id="icon-content_paste" viewBox="0 0 24 24">
+  <path
+  d="M18.984 20.016v-16.031h-1.969v3h-10.031v-3h-1.969v16.031h13.969zM12 2.016q-0.422 0-0.703 0.281t-0.281 0.703 0.281 0.703 0.703 0.281 0.703-0.281 0.281-0.703-0.281-0.703-0.703-0.281zM18.984 2.016q0.797 0 1.406 0.586t0.609 1.383v16.031q0 0.797-0.609 1.383t-1.406 0.586h-13.969q-0.797 0-1.406-0.586t-0.609-1.383v-16.031q0-0.797 0.609-1.383t1.406-0.586h4.172q0.328-0.891 1.078-1.453t1.734-0.563 1.734 0.563 1.078 1.453h4.172z">
+</path>
+</symbol>
+<symbol id="icon-remove" viewBox="0 0 24 24">
+  <path d="M18.984 12.984h-13.969v-1.969h13.969v1.969z"></path>
+</symbol>
+<symbol id="icon-remove_circle" viewBox="0 0 24 24">
+  <path
+  d="M17.016 12.984v-1.969h-10.031v1.969h10.031zM12 2.016q4.125 0 7.055 2.93t2.93 7.055-2.93 7.055-7.055 2.93-7.055-2.93-2.93-7.055 2.93-7.055 7.055-2.93z">
+</path>
+</symbol>
+<symbol id="icon-remove_circle_outline" viewBox="0 0 24 24">
+  <path
+  d="M12 20.016q3.281 0 5.648-2.367t2.367-5.648-2.367-5.648-5.648-2.367-5.648 2.367-2.367 5.648 2.367 5.648 5.648 2.367zM12 2.016q4.125 0 7.055 2.93t2.93 7.055-2.93 7.055-7.055 2.93-7.055-2.93-2.93-7.055 2.93-7.055 7.055-2.93zM6.984 11.016h10.031v1.969h-10.031v-1.969z">
+</path>
+</symbol>
+<symbol id="icon-layers" viewBox="0 0 24 24">
+  <path
+  d="M12 15.984q-0.422-0.328-3.82-2.977t-5.18-4.008l9-6.984 9 6.984q-1.781 1.359-5.156 3.984t-3.844 3zM12 18.563l7.359-5.766 1.641 1.266-9 6.984-9-6.984 1.641-1.266z">
+</path>
+</symbol>
+<symbol id="icon-apps" viewBox="0 0 24 24">
+  <path
+  d="M15.984 20.016v-4.031h4.031v4.031h-4.031zM15.984 14.016v-4.031h4.031v4.031h-4.031zM9.984 8.016v-4.031h4.031v4.031h-4.031zM15.984 3.984h4.031v4.031h-4.031v-4.031zM9.984 14.016v-4.031h4.031v4.031h-4.031zM3.984 14.016v-4.031h4.031v4.031h-4.031zM3.984 20.016v-4.031h4.031v4.031h-4.031zM9.984 20.016v-4.031h4.031v4.031h-4.031zM3.984 8.016v-4.031h4.031v4.031h-4.031z">
+</path>
+</symbol>
+<symbol id="icon-menu" viewBox="0 0 24 24">
+  <path d="M3 6h18v2.016h-18v-2.016zM3 12.984v-1.969h18v1.969h-18zM3 18v-2.016h18v2.016h-18z"></path>
+</symbol>
+<symbol id="icon-person" viewBox="0 0 24 24">
+  <path
+  d="M12 14.016q2.531 0 5.273 1.102t2.742 2.883v2.016h-16.031v-2.016q0-1.781 2.742-2.883t5.273-1.102zM12 12q-1.641 0-2.813-1.172t-1.172-2.813 1.172-2.836 2.813-1.195 2.813 1.195 1.172 2.836-1.172 2.813-2.813 1.172z">
+</path>
+</symbol>
+<symbol id="icon-person_add" viewBox="0 0 24 24">
+  <path
+  d="M15 14.016q2.531 0 5.273 1.102t2.742 2.883v2.016h-16.031v-2.016q0-1.781 2.742-2.883t5.273-1.102zM6 9.984h3v2.016h-3v3h-2.016v-3h-3v-2.016h3v-3h2.016v3zM15 12q-1.641 0-2.813-1.172t-1.172-2.813 1.172-2.836 2.813-1.195 2.813 1.195 1.172 2.836-1.172 2.813-2.813 1.172z">
+</path>
+</symbol>
+<symbol id="icon-school" viewBox="0 0 24 24">
+  <path
+  d="M12 3l11.016 6v8.016h-2.016v-6.938l-9 4.922-11.016-6zM5.016 13.172l6.984 3.844 6.984-3.844v4.031l-6.984 3.797-6.984-3.797v-4.031z">
+</path>
+</symbol>
+<symbol id="icon-thumb_down_alt" viewBox="0 0 24 24">
+  <path
+  d="M2.156 11.109l2.672-6.141q0.609-0.984 1.734-0.984h8.109q0.984 0 1.664 0.68t0.68 1.664v7.828q0 0.844-0.609 1.453l-6.422 6.375-0.422-0.469q-0.563-0.563-0.891-1.219-0.141-0.328-0.094-0.656l0.938-4.641h-5.531q-0.797 0-1.383-0.609t-0.586-1.406v-1.078q0-0.469 0.141-0.797zM21.984 3.984v11.016h-1.969q-0.422 0-0.727-0.281t-0.305-0.703v-9q0-0.422 0.305-0.727t0.727-0.305h1.969z">
+</path>
+</symbol>
+<symbol id="icon-thumb_up_alt" viewBox="0 0 24 24">
+  <path
+  d="M21.844 12.891l-2.672 6.141q-0.609 0.984-1.734 0.984h-8.109q-0.938 0-1.641-0.703t-0.703-1.641v-7.828q0-0.844 0.609-1.453l6.422-6.375 0.422 0.469q0.563 0.563 0.891 1.219 0.141 0.328 0.094 0.656l-0.938 4.641h5.531q0.797 0 1.383 0.609t0.586 1.406v1.078q0 0.422-0.141 0.797zM2.016 20.016v-11.016h1.969q0.422 0 0.727 0.281t0.305 0.703v9q0 0.422-0.305 0.727t-0.727 0.305h-1.969z">
+</path>
+</symbol>
+<symbol id="icon-home" viewBox="0 0 24 24">
+  <path d="M9.984 20.016h-4.969v-8.016h-3l9.984-9 9.984 9h-3v8.016h-4.969v-6h-4.031v6z"></path>
+</symbol>
+<symbol id="icon-settings" viewBox="0 0 24 24">
+  <path
+  d="M12 15.516q1.453 0 2.484-1.031t1.031-2.484-1.031-2.484-2.484-1.031-2.484 1.031-1.031 2.484 1.031 2.484 2.484 1.031zM19.453 12.984l2.109 1.641q0.328 0.234 0.094 0.656l-2.016 3.469q-0.188 0.328-0.609 0.188l-2.484-0.984q-0.984 0.703-1.688 0.984l-0.375 2.625q-0.094 0.422-0.469 0.422h-4.031q-0.375 0-0.469-0.422l-0.375-2.625q-0.891-0.375-1.688-0.984l-2.484 0.984q-0.422 0.141-0.609-0.188l-2.016-3.469q-0.234-0.422 0.094-0.656l2.109-1.641q-0.047-0.328-0.047-0.984t0.047-0.984l-2.109-1.641q-0.328-0.234-0.094-0.656l2.016-3.469q0.188-0.328 0.609-0.188l2.484 0.984q0.984-0.703 1.688-0.984l0.375-2.625q0.094-0.422 0.469-0.422h4.031q0.375 0 0.469 0.422l0.375 2.625q0.891 0.375 1.688 0.984l2.484-0.984q0.422-0.141 0.609 0.188l2.016 3.469q0.234 0.422-0.094 0.656l-2.109 1.641q0.047 0.328 0.047 0.984t-0.047 0.984z">
+</path>
+</symbol>
+<symbol id="icon-logout" viewBox="0 0 24 24">
+  <path
+  d="M3.984 5.016v13.969h8.016v2.016h-8.016q-0.797 0-1.383-0.609t-0.586-1.406v-13.969q0-0.797 0.586-1.406t1.383-0.609h8.016v2.016h-8.016zM17.016 6.984l4.969 5.016-4.969 5.016-1.406-1.453 2.578-2.578h-10.172v-1.969h10.172l-2.578-2.625z">
+</path>
+</symbol>
+<symbol id="icon-people_alt" viewBox="0 0 24 24">
+  <path
+  d="M9 12.984q1.5 0 3.281 0.422t3.258 1.406 1.477 2.203v3h-16.031v-3q0-1.219 1.477-2.203t3.258-1.406 3.281-0.422zM15 12q-0.609 0-1.313-0.234 1.313-1.547 1.313-3.75 0-0.891-0.375-2.016t-0.938-1.781q0.703-0.234 1.313-0.234 1.641 0 2.813 1.195t1.172 2.836-1.172 2.813-2.813 1.172zM5.016 8.016q0-1.641 1.172-2.836t2.813-1.195 2.813 1.195 1.172 2.836-1.172 2.813-2.813 1.172-2.813-1.172-1.172-2.813zM16.688 13.125q2.484 0.375 4.406 1.383t1.922 2.508v3h-4.031v-3q0-2.297-2.297-3.891z">
+</path>
+</symbol>
+<symbol id="icon-storage" viewBox="0 0 24 24">
+  <path
+  d="M3.984 11.016v1.969h2.016v-1.969h-2.016zM2.016 14.016v-4.031h19.969v4.031h-19.969zM6 6.984v-1.969h-2.016v1.969h2.016zM2.016 3.984h19.969v4.031h-19.969v-4.031zM3.984 17.016v1.969h2.016v-1.969h-2.016zM2.016 20.016v-4.031h19.969v4.031h-19.969z">
+</path>
+</symbol>
+</defs>
+</svg>
+
+
+
+</head>
+
+<body>
+
+
+  <header class="navbar">
+
+    <div class="sidebar-toggler" onclick="toggleNav(); return false;">
+      <div class="menu-bars"></div>
+    </div>
+
+    <a class="navbar-brand" href="#news">
+      <img src="v-logo.svg" alt="Brand" class="brand">
+      <span class="brand-text">Veri Ofisim</span>
+    </a>
+
+    <div class="avatar">
+      <div class="avatar-rounded">
+        <span>E</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="frame">
+
+    <nav class="sidebar">
+      <ul class="sidebar-list">
+        <li>
+          <a id="anasayfa" href="#" class="sidebar-link">
+            <svg class="icon">
+              <use xlink:href="#icon-home"></use>
+            </svg>
+            <span>Anasayfa</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="sidebar-link">
+            <svg class="icon">
+              <use xlink:href="#icon-people_alt"></use>
+            </svg>
+            <span>Bluzlar</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="sidebar-link">
+            <svg class="icon">
+              <use xlink:href="#icon-school"></use>
+            </svg>
+            <span>Pantolonlar</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="sidebar-link">
+            <svg class="icon">
+              <use xlink:href="#icon-add"></use>
+            </svg>
+            <span>Tişörtler</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="sidebar-link">
+            <svg class="icon">
+              <use xlink:href="#icon-storage"></use>
+            </svg>
+            <span>Takılar</span>
+          </a>
+        </li>
+
+      </ul>
+
+      <div class="sidebar-footer">
+        &copy; 2021 Kiraz Butik
+      </div>
+    </nav>
+
+    <main class="main" onclick="closeNav(); return false;">
+      <h1 class="page-heading" data-link="anasayfa"></h1>
+
+      <div class="row">
+        <div class="table-responsive">
+          <table>
+            <tr>
+              <th class="text-nowrap">First Name</th>
+              <th class="text-nowrap">Last Name</th>
+              <th>Points</th>
+              <th>Points</th>
+              <th>Points</th>
+              <th>Points</th>
+              <th>Points</th>
+              <th>Points</th>
+              <th>Points</th>
+              <th>Points</th>
+              <th>Points</th>
+              <th>Points</th>
+            </tr>
+            <tr>
+              <td>Jill</td>
+              <td>Smith</td>
+              <td class="text-center">50</td>
+              <td>50</td>
+              <td>50</td>
+              <td>50</td>
+              <td>50</td>
+              <td>50</td>
+              <td>50</td>
+              <td>50</td>
+              <td>50</td>
+              <td>50</td>
+            </tr>
+            <tr>
+              <td>Eve</td>
+              <td>Jackson</td>
+              <td>94</td>
+              <td>94</td>
+              <td>94</td>
+              <td>94</td>
+              <td>94</td>
+              <td>94</td>
+              <td>94</td>
+              <td>94</td>
+              <td>94</td>
+              <td>94</td>
+            </tr>
+            <tr>
+              <td>Adam</td>
+              <td>Johnson</td>
+              <td>67</td>
+              <td>67</td>
+              <td>67</td>
+              <td>67</td>
+              <td>67</td>
+              <td>67</td>
+              <td>67</td>
+              <td>67</td>
+              <td>67</td>
+              <td>67</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="row mb-6">
+        <div class="col-25">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+        <div class="col-25">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+        <div class="col-25">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+        <div class="col-25">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          Featured
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <div class="card-footer">
+          2 days ago
+        </div>
+      </div>
+
+    </main>
+
+    <div id="test-btn1" class="test-btn" style="bottom: 60px;" onclick="testBtn1(); return false;">1</div>
+    <div id="test-btn2" class="test-btn" style="bottom: 10px;" onclick="testBtn2(); return false;">2</div>
+
+  </div>
+
+  <script type="text/javascript">
+
+    function testBtn1() {
+      console.log("--- testBtn Clicked ---");
+    }
+
+    function testBtn2() {
+      console.log("--- testBtn2 Clicked ---");
+      toggleBackdropFade();
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      highlightMenu();
+    });
+
+    function highlightMenu() {
+      console.log("highlightMenu Çalıştı");
+      const page = document.querySelector(".page-heading").getAttribute("data-link");
+      const sidebarLink = document.querySelector("#"+page).classList.add("sidebar-link-active");
+    }
+
+    function toggleBackdropFade() {
+      const el = document.querySelector(".backdrop-fade");
+      if (el) {
+        el.remove();
+      } else {
+        const main = document.querySelector(".main");
+        const elFade = document.createElement("div");
+        elFade.setAttribute("class", "backdrop-fade opa");
+        elFade.setAttribute("onclick", "this.remove(); closeNav(); return false;");
+        main.appendChild(elFade);
+        setTimeout(function(){elFade.classList.add("fade-animate")}, 10);
+      }
+    }
+
+    function toggleNav() {
+      const sidebar = document.querySelector(".sidebar");
+      const main = document.querySelector(".main");
+      const sidebarToggler = document.querySelector('.sidebar-toggler');
+      toggleBackdropFade();
+      if (sidebar.classList.contains('sidebar-open')) {
+        sidebar.classList.remove('sidebar-open');
+        sidebarToggler.classList.remove('open');
+      } else {
+        sidebar.classList.add('sidebar-open');
+        sidebarToggler.classList.add('open');
+      }
+    }
+
+    function closeNav() {
+      const sidebar = document.querySelector(".sidebar");
+      const main = document.querySelector(".main");
+      const sidebarToggler = document.querySelector('.sidebar-toggler');
+      if (sidebar.classList.contains('sidebar-open')) {
+        sidebar.classList.remove('sidebar-open');
+        main.classList.remove('fade');
+        sidebarToggler.classList.remove('open');
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

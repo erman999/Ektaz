@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <title>Your Page Title</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=11">
+
+  <link href="../ektaz/reset.css" rel="stylesheet">
+
+  <style>
+
+  .flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .flex-item {
+    /* Styling */
+    background: tomato;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+
+    /* These are for item container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /*
+    * This is important
+    * flex-basis: 25%; means 4 divs in a row
+    * we make it 23% to give some space
+    * adding justify-content: space-around; to parent element
+    * will make page automatically margin-left: 1%; margin-right: 1%; and each div width: 23%;
+    * So we will have a fully adjusted 4 divs
+    */
+    flex-basis: 23%;
+    height: auto;
+  }
+
+  /* Now we want tablets to show 3 items in a row */
+  @media (max-width: 768px) {
+    .flex-item {
+      flex-basis: 32%;
+    }
+  }
+
+  /* Also we want smartphones to show 2 items in a row */
+  /* Ekran genişliği 0px den 576px'e kadar ise aşağıdakini uygula */
+  @media (max-width: 576px) {
+    .flex-item {
+      flex-basis: 48%;
+    }
+  }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="flex-container">
+    <div class="flex-item">1</div>
+    <div class="flex-item">2</div>
+    <div class="flex-item">3</div>
+    <div class="flex-item">4</div>
+    <div class="flex-item">5</div>
+    <div class="flex-item">6</div>
+    <div class="flex-item">7</div>
+    <div class="flex-item">8</div>
+    <div class="flex-item">9</div>
+    <div class="flex-item">10</div>
+  </div>
+
+</body>
+</html>

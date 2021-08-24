@@ -1,0 +1,10 @@
+/* Alignment */
+.text-left {text-align: left;}
+.text-right {text-align: right;}
+.text-center {text-align: center;}
+
+.v-align-top {vertical-align: top;}
+.v-align-bottom {vertical-align: bottom;}
+.v-align-middle {vertical-align: middle;}
+
+.text-nowrap {white-space: nowrap;}

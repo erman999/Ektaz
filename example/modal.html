@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <title>Your Page Title</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=11">
+
+  <link href="../ektaz/reset.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Lato;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Greeting Modal Container */
+    #greeting-modal {
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+
+    /* Greeting Modal Container - when open */
+    #greeting-modal:target {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Greeting Modal */
+    #greeting-modal .modal {
+      opacity: 0;
+      transform: translateY(-1rem);
+      transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition-delay: 0.2s;
+    }
+
+    /* Greeting Modal - when open */
+    #greeting-modal:target .modal {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Modal Container Styles */
+    .modal-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Modal Background Styles */
+    .modal-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    /* Modal Body Styles */
+    .modal {
+      z-index: 1;
+      background-color: white;
+      width: 80%;
+      max-width: 500px;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div id="app">
+    <h1>CSS Modal</h1>
+
+    <!-- Link to open modal -->
+    <a href="#greeting-modal">
+      Open Modal
+    </a>
+
+    <!-- Modal container -->
+    <div class="modal-container" id="greeting-modal">
+      <!-- Modal  -->
+      <div class="modal">
+        <h3>This is a modal</h3>
+        <p>This is the modals content.</p>
+      </div>
+
+      <!-- Background, click to close -->
+      <a href="#" class="modal-bg"></a>
+    </div>
+  </div>
+
+</body>
+</html>
