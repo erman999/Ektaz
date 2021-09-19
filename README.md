@@ -1,2 +1,2 @@
 # Ektaz
-It's a CSS framework
+Simple CSS Library
